@@ -6,5 +6,20 @@ namespace App\Tests\Helper;
 
 class Functional extends \Codeception\Module
 {
+    /**
+     * @param bool $followRedirects
+     * @throws \Codeception\Exception\ModuleException
+     */
+    public function followRedirects($followRedirects)
+    {
+        $this->getModule('Symfony')->client->followRedirects($followRedirects);
+    }
 
+    /**
+     * @throws \Codeception\Exception\ModuleException
+     */
+    public function followRedirect()
+    {
+        $this->getModule('Symfony')->client->followRedirect();
+    }
 }

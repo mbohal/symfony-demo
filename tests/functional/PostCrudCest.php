@@ -56,9 +56,12 @@ class PostCrudCest
         $I->fillField('Title', 'Sponsored post');
         $I->fillField('Summary', 'This post is sponsored, move along');
         $I->fillField('Content', 'Please read, this is very important');
+        $I->followRedirects(false);
         $I->click('Create post');
-        $I->see('Post List', 'h1');
-        $I->see('Sponsored post', 'table');
+        $I->dontSeeEmailIsSent();
+        $I->seeEmailIsSent(0);
+        $I->followRedirect();
+        $I->seeCurrentUrlEquals('/en/admin/post/');
         $I->seeInRepository(Post::class, ['title' => 'Sponsored post']);
     }
 

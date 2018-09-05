@@ -4,11 +4,17 @@ Symfony Demo Application
 We use official "Symfony Demo Application" to demonstrate basics of Codeception functional tests. Check out `tests` directory to see functional and unit tests included. We use [Symfony2](http://codeception.com/docs/modules/Symfony2) and [Doctrine2](http://codeception.com/docs/modules/Doctrine2) modules for zero-configuration Symfony testing.
 
 ## Run Codeception Tests
+First run PHP server:
+```
+cd public
+php -S 127.0.0.1:8000
+```
 
+Then run tests:
 ```
 composer install -n
 php bin/console doctrine:fixtures:load -n --env test
-php bin/codecept run
+php vendor/bin/codecept run
 ```
 
 Below goes official README of Symfony Demo Application:

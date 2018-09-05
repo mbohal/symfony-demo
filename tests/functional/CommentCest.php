@@ -7,6 +7,10 @@ use Codeception\Util\HttpCode;
 
 class CommentCest
 {
+    /**
+     * @param FunctionalTester $I
+     * @throws \Codeception\Exception\ModuleException
+     */
     public function createComment(FunctionalTester $I)
     {
         $I->amOnLocalizedPage('/login');
@@ -18,10 +22,13 @@ class CommentCest
         $I->seeCurrentRouteIs('blog_post');
         $I->dontSee('Hi, Symfony!');
         $I->fillField('comment[content]', 'Hi, Symfony!');
+        $I->followRedirects(false);
         $I->submitForm('#post-add-comment > form', []);
+        $I->seeEmailIsSent(1);
+        $I->seeEmailIsSent();
+        $I->followRedirect();
         $I->seeCurrentRouteIs('blog_post');
         $I->see('Hi, Symfony!');
         $I->seeInRepository(Comment::class, ['content' => 'Hi, Symfony!']);
     }
-
 }

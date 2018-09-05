@@ -1,4 +1,22 @@
 {
+    "behat/gherkin": {
+        "version": "v4.4.5"
+    },
+    "codeception/codeception": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "d2a29c0abee586aff913fd45fae1f59b669f4cbe"
+        }
+    },
+    "codeception/phpunit-wrapper": {
+        "version": "6.0.11"
+    },
+    "codeception/stub": {
+        "version": "2.0.4"
+    },
     "composer/ca-bundle": {
         "version": "1.0.8"
     },
